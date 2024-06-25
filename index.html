@@ -68,8 +68,8 @@
 
       <section id="log" class="container">
         <h2>Battle Log</h2>
-        <ul v-for="log in logBatalha">
-          <li>
+        <ul>
+          <li v-for="log in logBatalha">
             <b>{{ log.acaoPessoa }}</b> 
             realizou um <b>{{ log.acaoTipo }}</b> 
             com valor de <b>{{ log.acaoValor }}</b>
