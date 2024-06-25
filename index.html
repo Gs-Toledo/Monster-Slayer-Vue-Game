@@ -70,9 +70,16 @@
         <h2>Battle Log</h2>
         <ul>
           <li v-for="log in logBatalha">
-            <b>{{ log.acaoPessoa }}</b> 
-            realizou um <b>{{ log.acaoTipo }}</b> 
-            com valor de <b>{{ log.acaoValor }}</b>
+            <span :class="{'log--player': log.acaoPessoa === 'jogador', 'log--monster': log.acaoPessoa === 'monstro'}">
+              {{ log.acaoPessoa === 'jogador' ? 'Jogador' : 'Monstro' }}
+            </span> 
+            <span v-if="log.acaoTipo === 'cura'">
+              Curou-se no valor de <span class="log--heal">{{ log.acaoValor }}</span>
+            </span> 
+            <span v-else>
+              Atacou <span v-if="log.acaoTipo === 'magia'">com uma magia</span> 
+              e causou <span class="log--damage">{{ log.acaoValor }}</span> de dano
+            </span>
           </li>
         </ul>
       </section>

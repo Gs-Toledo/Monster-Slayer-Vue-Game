@@ -75,7 +75,7 @@ methods: {
         const valorCura = calcularValorAleatorio(20,8)
         if (valorCura + this.vidaJogador > 100) {
             this.vidaJogador = 100
-            this.adicionarLogBatalha('jogador','cura', valorCura - vidaJogador)
+            this.adicionarLogBatalha('jogador','cura', valorCura - this.vidaJogador)
         } else {
             this.vidaJogador += valorCura
             this.adicionarLogBatalha('jogador','cura', valorCura)
