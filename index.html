@@ -48,19 +48,33 @@
         </div>
       </section>
 
-      <section id="controls">
-        <button @click="atacarMonstro">ATTACK</button>
+      <section class="container" v-if="vencedor">
+        <h2>Game Over!!!</h2>
+        <h3 v-if="vencedor === 'jogador'" id="vencedor">Você venceu</h3>
+        <h3 v-else-if="vencedor === 'monstro'" id="perdedor">Você perdeu</h3>
+        <h3 v-else-if="vencedor === 'empate'" id="Empate">Deu empate</h3>
+        <button @click="reiniciarJogo">Tentar Novamente</button>
+      </section>
+
+      <section id="controls" v-if="!vencedor">
+        <button @click="atacarMonstro">ATACAR</button>
         <button 
           :disabled="isAtaqueEspecialDisponivel" 
-          @click="ataqueEspecial">SPECIAL ATTACK</button>
+          @click="ataqueEspecial">MAGIA</button>
         <button 
-          @click="curarJogador">HEAL</button>
-        <button>SURRENDER</button>
+          @click="curarJogador">CURAR</button>
+        <button @click="seRender">RENDER-SE</button>
       </section>
 
       <section id="log" class="container">
         <h2>Battle Log</h2>
-        <ul></ul>
+        <ul v-for="log in logBatalha">
+          <li>
+            <b>{{ log.acaoPessoa }}</b> 
+            realizou um <b>{{ log.acaoTipo }}</b> 
+            com valor de <b>{{ log.acaoValor }}</b>
+          </li>
+        </ul>
       </section>
 
     </div>
